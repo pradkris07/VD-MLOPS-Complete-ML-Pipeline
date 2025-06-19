@@ -1,0 +1,7 @@
+Building Pipeline:
+1> Create a GitHub repo and clone it in local 
+2> Add projectflow.txt to follow the actions taken
+3> Create a new folder experiments and add 2 files downloaded from the Vikas Das repositories.  
+One is a .ipynb file and another is a datafile which has spam details.
+4> Add src folder along with all components(run them individually).~
+i> data_ingestion.py
