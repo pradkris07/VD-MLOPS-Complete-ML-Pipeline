@@ -18,3 +18,11 @@ Setting up dcv pipeline (without params)
 8> Create dvc.yaml file and add stages to it.
 9> dvc init then do "dvc repro" to test the pipeline automation. (check dvc dag)
 10> Now git add, commit, push
+------------------------------------------------------------------------------
+Setting up dcv pipeline (with params)
+8> add params.yaml file
+9> Add the params setup (mentioned below)
+    i> change in the data_ingestion.py, feature_engineering.py, model_training.py
+    ii> change in the dvc.yaml file to include the parameters
+10> Do "dvc repro" again to test the pipeline along with the params
+11> Now git add, commit, push

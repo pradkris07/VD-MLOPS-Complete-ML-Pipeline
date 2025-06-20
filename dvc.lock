@@ -5,8 +5,12 @@ stages:
     deps:
     - path: src/data_ingestion.py
       hash: md5
-      md5: 029d57e12a379c40121e647d01dc1849
-      size: 3681
+      md5: 16f07a4e734f27a7e57982c7719994a6
+      size: 3740
+    params:
+      params.yaml:
+        data_ingestion.file_path: https://raw.githubusercontent.com/pradkris07/VD-MLOPS-Complete-ML-Pipeline/refs/heads/main/experiments/spam.csv
+        data_ingestion.test_size: 0.2
     outs:
     - path: data/raw
       hash: md5
@@ -41,38 +45,45 @@ stages:
       nfiles: 2
     - path: src/feature_engineering.py
       hash: md5
-      md5: a50ed742cbe2361b7dd656fd24bbe35a
-      size: 3910
+      md5: 9000c4cbafcaca3464664391d46659d2
+      size: 3909
+    params:
+      params.yaml:
+        feature_engineering.max_features: 35
     outs:
     - path: data/processed
       hash: md5
-      md5: c0d85ddb7ab99b6171fc723bffeee71f.dir
-      size: 1180012
+      md5: 1c21480115da0aa2cf7b71f23ac6d82b.dir
+      size: 834746
       nfiles: 2
   model_building:
     cmd: python src/model_training.py
     deps:
     - path: data/processed
       hash: md5
-      md5: c0d85ddb7ab99b6171fc723bffeee71f.dir
-      size: 1180012
+      md5: 1c21480115da0aa2cf7b71f23ac6d82b.dir
+      size: 834746
       nfiles: 2
     - path: src/model_training.py
       hash: md5
-      md5: 38920d5e7b84771583d1a1fd037fdc7d
+      md5: d3240259f2133dfcc323b6448fee372e
       size: 4481
+    params:
+      params.yaml:
+        model_building.n_estimators: 22
+        model_building.random_state: 2
     outs:
     - path: models/model.pkl
       hash: md5
-      md5: 5228f2cea33c6ab4d2bb65c0770c3ffa
-      size: 998345
+      md5: ff38cab6dec7274b17c58a709c1225a0
+      size: 720046
   model_evaluation:
     cmd: python src/model_evaluation.py
     deps:
     - path: models/model.pkl
       hash: md5
-      md5: 5228f2cea33c6ab4d2bb65c0770c3ffa
-      size: 998345
+      md5: ff38cab6dec7274b17c58a709c1225a0
+      size: 720046
     - path: src/model_evaluation.py
       hash: md5
       md5: 0c32711989654643d89c274129f7d091
@@ -80,5 +91,5 @@ stages:
     outs:
     - path: reports/metrics.json
       hash: md5
-      md5: eac6afc8901064a391e7366797af3727
+      md5: abba219d58644dde3de017d8eedbd8b8
       size: 145
