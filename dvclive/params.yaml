@@ -1,0 +1,8 @@
+data_ingestion:
+  test_size: 0.2
+  file_path: https://raw.githubusercontent.com/pradkris07/VD-MLOPS-Complete-ML-Pipeline/refs/heads/main/experiments/spam.csv
+feature_engineering:
+  max_features: 35
+model_building:
+  n_estimators: 22
+  random_state: 2
