@@ -50,3 +50,14 @@ with Live(save_dvc_exp=True) as live:
 16> Do "dvc exp remove {exp-name}" to remove exp (optional) | "dvc exp apply {exp-name}" to reproduce prev exp
 17> Change params, re-run code (produce new experiments)
 18> Now git add, commit, push
+
+-------------------------------------------------------------------------------------------------
+Adding a remote S3 storage to DVC:
+1> login to AWS console
+2> create an IAM user
+3> create S3 bucket
+4> pip install dvc[s3]
+5> pip install awscli
+6> run "äws configure" on terminal
+7> dvc remote add -d dvcstore s3://<bucketname>
+8> dvc commit, dvc push will push the exp outcome that you want to keep into S3 bucket
